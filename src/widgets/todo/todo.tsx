@@ -1,7 +1,7 @@
 import { useMemo, useState, useCallback } from 'react';
 import { Input, Button } from 'antd';
 import { useTodos } from '~app/providers/TodoProvider';
-import { DownOutlined } from '@ant-design/icons';
+import { CheckOutlined, DownOutlined } from '@ant-design/icons';
 import { useTheme } from '~entities/contexts/theme-context';
 import { getThemeColors } from '~constants/colors';
 
@@ -165,6 +165,22 @@ export function TodoApp() {
                     : '#E6E6E6',
                 }}
               />
+            }
+            suffix={
+              text ? (
+                <CheckOutlined
+                  style={{
+                    color: themeColors.filterButtonText,
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => {
+                    const value = text.trim();
+                    if (!value) return;
+                    addTodo(value);
+                    setText('');
+                  }}
+                />
+              ) : null
             }
             value={text}
             onChange={handleInputChange}
