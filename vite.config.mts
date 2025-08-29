@@ -17,6 +17,7 @@ export default ({ mode }) => {
         ClosePlugin(),
       ],
     }),
+    base: '/testTask-taskList/',
     server: { host: false },
     preview: { open: true },
     resolve: {
